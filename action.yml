@@ -119,6 +119,7 @@ runs:
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
+        OPTION_DEFINES: ${{ inputs.option_defines }}
       run: |
         url=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.html_url')
         echo '{
@@ -127,7 +128,7 @@ runs:
                 "dest": "api",
                 "globalNamespaceId": "Global",
                 "allowCompilationErrors": true,
-                "DefineConstants": ${{ inputs.option_defines }}
+                "DefineConstants": [ "${OPTION_DEFINES}" ]
             }],
             "build": {
                 "globalMetadata": {
