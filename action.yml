@@ -128,7 +128,7 @@ runs:
                 "dest": "api",
                 "globalNamespaceId": "Global",
                 "allowCompilationErrors": true,
-                "DefineConstants": [ "${{ inputs.option_defines }}" ]
+                "DefineConstants": "${{ inputs.option_defines }}"
             }],
             "build": {
                 "globalMetadata": {
