@@ -8,6 +8,8 @@ inputs:
   github_token:
     description: 'Set a generated GITHUB_TOKEN for pushing to the remote branch.'
     required: false
+  option_difines:
+    required: false
 
 runs:
   using: "composite"
@@ -124,7 +126,8 @@ runs:
                 "src": [{"src": "..", "files": ["**/*.cs"]}],
                 "dest": "api",
                 "globalNamespaceId": "Global",
-                "allowCompilationErrors": true
+                "allowCompilationErrors": true,
+                "DefineConstants": ${{ inputs.option_defines }}
             }],
             "build": {
                 "globalMetadata": {
